@@ -1,0 +1,16 @@
+<%if current_user %>
+<h1> Hi <%= current_user.username%> </h1>
+<% end %>
+<h1>Welcome to Paws BnB !</h1>
+
+<% @dogs.each do |dog| %>
+<div>
+<%= link_to dog.name, dog_path(dog) %>
+</div>
+<% end %>
+
+
+
+
+
+<%= link_to 'post your paw', new_dog_path %>

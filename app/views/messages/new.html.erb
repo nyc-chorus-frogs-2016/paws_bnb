@@ -1,0 +1,21 @@
+<%= form_for(@msg, url: dog_messages_path) do |f| %>
+<fieldset>
+  <legend> Send your message here</legend>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+
+  <%= f.hidden_field :owner_id, value: @dog.owner_id %>
+
+  <div>
+    <%= f.submit %>
+  </div>
+</fieldset>
+<% end %>
+

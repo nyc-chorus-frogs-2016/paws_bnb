@@ -1,0 +1,54 @@
+<%= form_for @dog do |f| %>
+<fieldset>
+  <legend> Create your paws profile here:</legend>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :breed %>
+    <%= f.text_field :breed %>
+  </div>
+
+  <div>
+    <%= f.label :sex %>
+    <%= f.text_field :sex %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div>
+    <%= f.label :is_your_paw_neutered? %>
+    <%= f.text_field :is_neutered %>
+  </div>
+
+  <div>
+    <%= f.label :zip %>
+    <%= f.text_field :zip %>
+  </div>
+
+  <div>
+    <%= f.label :age_range %>
+    <%= f.text_field :age_range %>
+  </div>
+
+  <div>
+    <%= f.label :foster_start %>
+    <%= f.date_select :foster_start %>
+  </div>
+
+  <div>
+    <%= f.label :foster_end %>
+    <%= f.date_select :foster_end %>
+  </div>
+
+
+  <div>
+    <%= f.submit %>
+  </div>
+</fieldset>
+<% end %>

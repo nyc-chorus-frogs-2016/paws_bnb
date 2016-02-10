@@ -1,0 +1,12 @@
+<h3>Past Foster Parents of <%=@dog.name %></h3>
+
+<% @dog.matchings.each do |match| %>
+<div>
+<%= match.foster_start %>
+<%= match.foster_end %>
+<%= match.foster_parent.username %>
+</div>
+<% end %>
+
+
+<%=link_to 'back to paw', dog_path(@dog) %>

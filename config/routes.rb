@@ -1,7 +1,25 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  resources :users, only: [:new, :create, :show] do
+       resources :foster_parent_ratings
+     end
+  resource :session, only: [:new, :create, :destroy]
+   resources :dogs do
+     resources :messages
+     resources :matchings, only: [:create, :show]
+   end
+  # resources :restaurants do
+  get 'dogs/:id/past' => 'matchings#past_match'
+  get 'users/:id/info' => 'users#info'
+  #   resources :reviews, only: [:create]
+  # end
+  # resources :reviews, only: [] do
+  #   collection do
+  #     get 'latest'
+  #   end
+  # end
+  root 'dogs#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

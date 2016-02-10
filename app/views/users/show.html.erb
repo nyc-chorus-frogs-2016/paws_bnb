@@ -1,0 +1,47 @@
+<h1><%=@user.username %></h1>
+
+<%= @user.zip %>
+<%= @user.about_me %>
+
+
+<% if @user.dogs.count != 0 %>
+<h3>My Paws</h3>
+<% @user.dogs.each do |dog|%>
+<h2><%= link_to dog.name, dog_path(dog)%></h2>
+<% end  %>
+<% end %>
+
+
+
+<h3><%=@user.username %>'s ratings:</h3>
+<div>
+<% @user.received_ratings.each do |rating|%>
+<h4> Rating: <%= rating.rating %> </h4>
+<h4> Comment: <%= rating.comment %> </h4>
+</div>
+<% end %>
+<hr>
+
+
+
+
+<h2>Rate Host</h2>
+
+<%= form_for [@user, @foster_parent_rating] do |f| %>
+  <div>
+    <%= f.label :rating %>
+    <%= f.select :rating, value: [1,2,3,4,5] %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_field :comment %>
+  </div>
+  <%= f.hidden_field :foster_parent_id, value: @user.id %>
+
+  <div>
+    <%= f.submit "Submit Rating" %>
+  </div>
+
+
+<% end %>

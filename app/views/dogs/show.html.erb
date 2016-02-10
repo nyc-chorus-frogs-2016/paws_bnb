@@ -1,0 +1,35 @@
+<h1><%=@dog.name %></h1>
+
+<h4>Breed: <%=@dog.breed %> </h4>
+<h4>Sex: <%=@dog.sex %></h4>
+<h4>Neutered: <%=@dog.is_neutered %></h4>
+<h4>Description: <%=@dog.description %></h4>
+<h4>Zip: <%=@dog.zip %></h4>
+<h4>Age_range: <%=@dog.age_range %></h4>
+<h4>Owner: <%= link_to @dog.owner.username, user_path(@dog.owner) %></h4>
+<h4>Searching for foster home from: <%=@dog.foster_start %> ~ <%=@dog.foster_end %></h4>
+
+
+<h3>Want to foster <%=@dog.name %>? <%= link_to "Message #{@dog.owner.username}", new_dog_message_path(@dog) %> </h3>
+
+<%= form_for [@dog, @matching] do |f| %>
+  <div>
+    <%= f.label :foster_start %>
+    <%= f.date_select :foster_start %>
+  </div>
+
+  <div>
+    <%= f.label :foster_end %>
+    <%= f.date_select :foster_end %>
+  </div>
+  <%= f.hidden_field :dog_id, value: @dog.id %>
+
+  <div>
+    <%= f.submit "Foster #{@dog.name}" %>
+  </div>
+
+
+<% end %>
+
+
+<%= link_to 'Past Host Parents', "/dogs/#{@dog.id}/past" %>
